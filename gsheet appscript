@@ -1,0 +1,14 @@
+function doPost(e) {
+  
+}
+
+function doGet(e) {
+  var sheet = SpreadsheetApp.openById("1akVaWqb0w6N6arvzCFxkN3PaDWJCyHV2qabQAGSIIgc").getSheetByName("Sheet1"); // Replace "Sheet1" with your sheet name if different
+  var data = e.parameter;
+  var fname = data.First_Name;
+  var lname = data.Last_Name;
+  var email = data.Email;
+  
+  sheet.appendRow([fname, lname, email]);
+  return ContentService.createTextOutput("Success!!!!!!!");
+}
