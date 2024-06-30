@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form id="warrantyform">
+    <input type="text" name="First_Name" placeholder="First Name">
+    <input type="text" name="Last_Name" placeholder="Last Name">
+    <input type="email" name="Email" placeholder="Email">
+    <button type="button" onclick="submitForm()">Submit</button> 
+  </form>
+
+
+
+  <script>
+  async function submitForm() {
+    var form = document.getElementById("warrantyform");
+    var data = new FormData(form); // Create FormData object
+
+    const response = await fetch("https://script.google.com/macros/s/AKfycbyl5Pj1O8TOwxNDN_AmP_LlznJo0gZiQ_-v3q2Mvhifjmb6UqEZPYHWl1wgrQouZVL3/exec", {
+      method: 'POST',
+      body: data
+    });
+
+    if (response.ok) {
+      // Success! Update UI or display confirmation message here
+      document.getElementById("warrantyform").reset(); // Clear form after success
+      alert("Data submitted successfully!");
+    } else {
+      alert("Error: " + response.statusText);
+    }
+  }
+</script>
+</body>
+</html>
